@@ -1,0 +1,29 @@
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+table {
+    width: 40%;
+}
+
+.ng-select {
+    border: 2px;
+    min-height: 0px;
+    border-radius: 0;
+    width: 40%;
+}
+
+.ng-control {
+    min-height: 0px;
+    border-radius: 0;
+}
+
+:host-context(.selectcustom) .ng-control {
+    min-height: 0px;
+    border-radius: 0;
+}

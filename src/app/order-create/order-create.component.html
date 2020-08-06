@@ -1,0 +1,70 @@
+<div class="form-group">
+    <h4>Series</h4>
+    <mat-form-field appearance="fill">
+        <mat-label>Select Series</mat-label>
+        <mat-select [(value)]="selectedSeries" (selectionChange)=seriesChange($event.value)>
+            <mat-option *ngFor="let series of seriesList" value={{series.code}}>
+                {{series.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="form-group">
+    <h4>Models</h4>
+    <mat-form-field appearance="fill">
+        <mat-label>Select Model</mat-label>
+        <mat-select [(value)]="selectedModel" (selectionChange)=modelChange($event.value)>
+            <mat-option *ngFor="let model of modelList" value={{model.code}}>
+                {{model.modelName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="form-group">
+    <h4>Accessoriess</h4>
+    <!-- <table mat-table [dataSource]="dataSourceForAccessory" class="mat-elevation-z8">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplayForAccessory">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element" style="cursor: pointer"> {{element[column]}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayForAccessory; sticky: true"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayForAccessory;"></tr>
+    </table> -->
+    <ng-select bindLabel="AccessoryName" placeholder="Select Accessories" appendTo="body" multiple="true" [(ngModel)]="selectedAccessories" (change)="getAccValues()">
+        <ng-option [value]=acc.code *ngFor="let acc of accList">
+            {{acc.AccessoryName}}
+        </ng-option>
+    </ng-select>
+</div>
+<div class="form-group">
+    <h4>Select Colors</h4>
+
+    <!-- <table mat-table [dataSource]="dataSourceForColor" class="mat-elevation-z8">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplayForColor">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element" style="cursor: pointer"> {{element[column]}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayForColor; sticky: true"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayForColor;">
+        </tr>
+    </table> -->
+
+    <ng-select bindLabel="ColorsName" placeholder="Select Colors" appendTo="body" multiple="true" [(ngModel)]="selectedColors" (change)="getColorValues()">
+        <ng-option [value]=color.code *ngFor="let color of colorsList">
+            {{color.ColorsName}}
+        </ng-option>
+    </ng-select>
+</div>
+<div class="form-group">
+    <span>
+        <button mat-flat-button color="primary" type="submit" label="calculateprice" (click)=calculateTotalPrice()>CalculatePrice</button>
+    </span>
+    <mat-form-field class="example-full-width">
+        <mat-label>$</mat-label>
+        <input matInput disabled value={{TotalPrice}}>
+    </mat-form-field>
+</div>
+<div class="form-group">
+    <button mat-flat-button color="primary" type="submit" label="Create" (click)=saveOrder()>Create</button>
+    <button mat-flat-button color="primary" type="submit" label="Reset" (click)=clear()>Reset</button>
+</div>
